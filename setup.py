@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='kkssh',
-    version='0.9',
+    version='0.10',
     description='ssh client',
     author='xingkun',
     author_email='xingkunliu@qq.com',

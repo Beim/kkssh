@@ -66,10 +66,19 @@ def main():
                         description='ssh wrapper')
 
     parser.add_argument('-c', '--config', required=False, default='~/.ssh/config')
+    parser.add_argument('--editor', default='code')
+    parser.add_argument('-e', '--edit', action='store_true')
     parser.add_argument('hostname', nargs='?')
     args = parser.parse_args()
     ssh_config_path = args.config
     target_host = args.hostname
+    editor = args.editor
+    edit = args.edit
+
+    if edit:
+        print(f'Opening {ssh_config_path}')
+        os.system(f'{editor} {ssh_config_path}')
+        return
 
     # Load ssh config
     ssh_config = paramiko.SSHConfig()
