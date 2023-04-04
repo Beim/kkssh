@@ -5,7 +5,7 @@ with open("README.md", "r", encoding = "utf-8") as fh:
 
 setup(
     name='kkssh',
-    version='0.11',
+    version='0.13',
     description='ssh client',
     long_description = long_description,
     long_description_content_type = "text/markdown",
@@ -16,7 +16,9 @@ setup(
     package_dir={'': 'src'},
     keywords='ssh client',
     install_requires=[
-        'paramiko',
+        'paramiko==3.1.0',
+        'fuzzywuzzy==0.18.0',
+        'python-Levenshtein==0.20.9'
     ],
     entry_points={
         'console_scripts': [

@@ -7,11 +7,10 @@ def connect(host: str):
     os.system(f'ssh {host}')
 
 def connect_to_user_selected(hosts: list[str]):
-    # Let user select
-    ss = '#\tHost\n'
+    ss = '# Host\n'
     for idx in range(len(hosts)):
         host = hosts[idx]
-        ss += f'{idx}\t{host}\n'
+        ss += f'{idx} {host}\n'
     ss += 'Select Index or Host: [0]'
     print(ss, end=" ", flush=True)
 
@@ -27,7 +26,6 @@ def connect_to_user_selected(hosts: list[str]):
     if not selected.isdigit():
         connect(selected)
         return
-
     # user input index
     try:
         selected_idx = int(selected)
@@ -46,9 +44,12 @@ def parse_sys_args():
                         prog='kkssh',
                         description='ssh wrapper')
 
-    parser.add_argument('-c', '--config', required=False, default='~/.ssh/config')
-    parser.add_argument('--editor', default='code')
-    parser.add_argument('-e', '--edit', action='store_true')
+    parser.add_argument('-c', '--config', required=False, default='~/.ssh/config',
+                        help='ssh configuration file')
+    parser.add_argument('--editor', default='code',
+                        help='editor to open ssh configuration')
+    parser.add_argument('-e', '--edit', action='store_true',
+                        help='edit ssh configuration')
     parser.add_argument('hostname', nargs='?')
     return parser.parse_args()
 
