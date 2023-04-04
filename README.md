@@ -9,15 +9,15 @@ Python 3.10.10
 pip install --upgrade kkssh
 ```
 
-## Update
-
-```bash
-python setup.py sdist
-twine upload dist/*
-```
-
 ## Usage
 
 ```bash
 kkssh -c ~/.ssh/config HOST
+```
+
+## Develop
+
+```bash
+python setup.py sdist
+twine upload dist/*
 ```
